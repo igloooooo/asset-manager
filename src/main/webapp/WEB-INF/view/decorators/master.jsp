@@ -31,15 +31,24 @@
         <%@ include file="/WEB-INF/view/includes/style.jsp" %>
     </head>
     <body>
-        <div id="header">
+        <!-- header -->
+        <div id="header" class="navbar">
             <%@ include file="/WEB-INF/view/includes/header.jsp" %>
         </div>
         <div id="javascript" >
             <%@ include file="/WEB-INF/view/includes/script.jsp" %>
         </div>
-        <div id="content">
-            <decorator:body />
+        <!-- content -->
+        <div id="left_layout">
+            <!-- main content -->
+            <div id="main_content" class="container-fluid">
+                <decorator:body />
+            </div>
+            <!-- sidebar-->
+            <%@include file="/WEB-INF/view/includes/sidebar.jsp"%>
         </div>
+        <!-- navigator -->
+
         <div id="footer">
             <%@ include file="/WEB-INF/view/includes/footer.jsp" %>
         </div>

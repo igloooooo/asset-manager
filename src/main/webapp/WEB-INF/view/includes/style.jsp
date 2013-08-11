@@ -20,3 +20,6 @@
 <link rel="stylesheet" href="/css/theme.css" />
 <link rel="stylesheet" href="/css/primeui-0.9.6-min.css" />
 <link rel="stylesheet" href="/css/base-theme.css" />
+<link href="library/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="library/assets/css/bootstrap-responsive.css" rel="stylesheet" />
+<link href="library/css/styles.css" rel="stylesheet" />
