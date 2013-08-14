@@ -31,13 +31,15 @@
         <%@ include file="/WEB-INF/view/includes/style.jsp" %>
     </head>
     <body>
+        <!-- script -->
+        <div id="javascript" >
+            <%@ include file="/WEB-INF/view/includes/script.jsp" %>
+        </div>
         <!-- header -->
         <div id="header" class="navbar">
             <%@ include file="/WEB-INF/view/includes/header.jsp" %>
         </div>
-        <div id="javascript" >
-            <%@ include file="/WEB-INF/view/includes/script.jsp" %>
-        </div>
+
         <!-- content -->
         <div id="left_layout">
             <!-- main content -->

@@ -18,9 +18,12 @@
 --%>
 <script type="text/javascript" src="/js/json2.js"></script>
 <script type="text/javascript" src="${pageContext.request.scheme}://www.google.com/jsapi?key=<c:choose><c:when test="${pageContext.request.scheme == 'http'}">${initParam.jsapiHttpKey}</c:when><c:otherwise>${initParam.jsapiHttpsKey}</c:otherwise></c:choose>"></script>
+<script src="http://code.jquery.com/jquery-${initParam.jQueryVersion}.min.js"></script>
+<!--
 <script type="text/javascript">
     google.load("jquery", "<c:out value='${initParam.jQueryVersion}'/>");
 </script>
+-->
 <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 <script type="text/javascript" src="/js/primeui-0.9.6-min.js"></script>
 
@@ -28,7 +31,7 @@
 <script src="http://maps.google.com/maps/api/js?v=3.5&sensor=false"></script>
 
 <!-- base -->
-<script src="library/assets/js/jquery.js"></script>
+
 <script src="library/assets/js/bootstrap.min.js"></script>
 
 <!-- addons -->

@@ -370,8 +370,9 @@
                 <artifactId>maven-datanucleus-plugin</artifactId>
                 <version>1.1.4</version>
                 <configuration>
-                    <mappingIncludes>**/model/*/*.class</mappingIncludes>
+                    <mappingIncludes>**/model/**/*.class</mappingIncludes>
                     <verbose>true</verbose>
+                    <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
                     <enhancerName>ASM</enhancerName>
                     <api>JPA</api>
                 </configuration>
