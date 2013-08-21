@@ -25,6 +25,6 @@ public class MerchantManageController {
     @RequestMapping(value = "/merchant", method = RequestMethod.GET)
     public final String merchantManager(final ModelMap modelMap)
     {
-        return "merchant";
+        return "merchant/merchantManager";
     }
 }

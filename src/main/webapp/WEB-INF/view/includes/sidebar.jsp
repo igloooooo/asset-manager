@@ -37,7 +37,7 @@
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="micon-gift"></i>
-            <span class="hidden-phone">UI</span>
+            <span class="hidden-phone">Asset</span>
         </a>
         <ul class="dropdown-menu">
             <li>
@@ -97,27 +97,15 @@
             </li>
         </ul>
     </li>
-    <li>
-        <a href="charts.html">
-            <i class="micon-stats-up"></i>
-            <span class="hidden-phone">Charts</span>
-        </a>
-    </li>
-    <li>
-        <a href="maps.html">
-            <i class="micon-location"></i>
-            <span class="hidden-phone">Maps</span>
-        </a>
-    </li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="micon-checkbox"></i>
-            <span class="hidden-phone">Form</span>
+            <span class="hidden-phone">Profile</span>
         </a>
         <ul class="dropdown-menu">
             <li>
-                <a href="form-elements.html">
-                    <i class="icon-large icon-th-large"></i> Form elements
+                <a href="merchant/merchant.jsp">
+                    <i class="icon-large icon-th-large"></i> Merchant Management
                 </a>
             </li>
             <li>
@@ -138,9 +126,9 @@
         </ul>
     </li>
     <li>
-        <a href="widgets.html">
+        <a href="/logout">
             <i class="micon-lab"></i>
-            <span class="hidden-phone">Widgets</span>
+            <span class="hidden-phone">Logout</span>
         </a>
     </li>
 </ul>

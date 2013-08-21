@@ -20,6 +20,14 @@
 <html>
     <head>
         <title><spring:message code="createSuccess.title" /></title>
+        <link rel="stylesheet" href="/css/jquery-ui.css" />
+        <link rel="stylesheet" href="/css/primeui-0.9.6-min.css" />
+        <link rel="stylesheet" href="/css/theme.css" />
+        <script type="text/javascript" src="/js/json2.js"></script>
+        <script type="text/javascript" src="${pageContext.request.scheme}://www.google.com/jsapi?key=<c:choose><c:when test="${pageContext.request.scheme == 'http'}">${initParam.jsapiHttpKey}</c:when><c:otherwise>${initParam.jsapiHttpsKey}</c:otherwise></c:choose>"></script>
+        <script src="http://code.jquery.com/jquery-${initParam.jQueryVersion}.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+        <script type="text/javascript" src="/js/primeui-0.9.6-min.js"></script>
     </head>
     <body>
         <h2><spring:message code="createSuccess.header" /></h2>

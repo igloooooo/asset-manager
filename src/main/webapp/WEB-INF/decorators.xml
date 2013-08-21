@@ -19,6 +19,8 @@
 -->
 <decorators defaultdir="/WEB-INF/view/decorators">
     <decorator name="master" page="master.jsp">
-        <pattern>/*</pattern>
+        <pattern>/merchant/*</pattern>
+        <pattern>/help.jsp</pattern>
+        <pattern>/index.jsp</pattern>
     </decorator>
 </decorators>
