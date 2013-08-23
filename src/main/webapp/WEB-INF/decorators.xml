@@ -18,9 +18,13 @@
     along with assetmanager.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <decorators defaultdir="/WEB-INF/view/decorators">
+    <excludes>
+        <pattern>/login</pattern>
+        <pattern>/login.jsp</pattern>
+    </excludes>
     <decorator name="master" page="master.jsp">
         <pattern>/merchant/*</pattern>
-        <pattern>/help.jsp</pattern>
-        <pattern>/index.jsp</pattern>
+        <pattern>/index</pattern>
+        <pattern>/help</pattern>
     </decorator>
 </decorators>

@@ -21,6 +21,7 @@
 <html>
 <head>
     <title><spring:message code="index.title" /></title>
+    <meta name="decorator" content="master" />
 </head>
 <body>
 <sec:authorize access="isAnonymous()">

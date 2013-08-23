@@ -40,6 +40,7 @@
     <mvc:view-controller path="/" view-name="index" />
     <mvc:view-controller path="/login" view-name="login" />
     <mvc:view-controller path="/error" view-name="error" />
+    <mvc:view-controller path="/index" view-name="index" />
     <mvc:view-controller path="/helloWorld" view-name="index" />
     <mvc:view-controller path="/register/success" view-name="createSuccess" />
     <mvc:view-controller path="/merchant" view-name="merchant/merchantManager" />
