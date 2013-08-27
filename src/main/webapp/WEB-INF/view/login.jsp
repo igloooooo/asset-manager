@@ -34,41 +34,48 @@
     </head>
     <body>
         <sec:authorize access="isAnonymous()">
-            <fieldset id="login_fieldset" style="margin-bottom:20px">
-                <legend><spring:message code="login.header"/></legend>
+            <div class="well widget">
+                <div class="widget-header">
+               		<h3 class="title">Welcome to AM</h3>
+               	</div>
+                <fieldset id="login_fieldset" style="margin-bottom:20px">
+                    <legend><spring:message code="login.header"/></legend>
 
-                <c:if test="${not empty error}">
-                    <p><spring:message code="login.error"/></p>
-                </c:if>
+                    <c:if test="${not empty error}">
+                        <p><spring:message code="login.error"/></p>
+                    </c:if>
 
-                <p id="userWarning" class="error" style="display:none"><spring:message code="login.nouser"/></p>
+                    <p id="userWarning" class="error" style="display:none"><spring:message code="login.nouser"/></p>
 
-                <form action="/login/submit" method="post">
-                    <table>
-                        <tr>
-                            <td><spring:message code="login.label.username"/></td>
-                            <td><input id="username" type="text" name="username"
-                                       value="<c:if test="${not empty error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}" escapeXml="false" /></c:if>"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><spring:message code="login.label.password"/></td>
-                            <td><input id="password" type="password" name="password"/></td>
-                        </tr>
-                        <tr>
-                            <td><spring:message code="login.label.remember"/></td>
-                            <td><input id="remember_me_checkbox" type="checkbox" name="remember_me"/></td>
-                        </tr>
-                        <tr>
-                            <td><input name="reset" type="reset" value="<spring:message code="global.reset" />"/></td>
-                            <td><input id="submit-btn" name="submit" type="submit" value="<spring:message code="global.submit" />"/></td>
-                        </tr>
-                    </table>
-                </form>
+                    <form action="/login/submit" method="post" class="form-horizontal">
+                        <div class="control-group">
+                            <label for="username" class="control-label"><spring:message code="login.label.username"/></label>
+                            <div class="controls">
+                                <input type="text" name="username" placeholder="Username" id="username" value="<c:if test="${not empty error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}" escapeXml="false" /></c:if>"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="password" class="control-label"><spring:message code="login.label.password"/></label>
+                            <div class="controls">
+                                <input type="password" placeholder="Password" id="password">
+                            </div>
+                        </div>
 
-                <p><spring:message code="login.create" htmlEscape="false"/></p>
-            </fieldset>
-            <div id="notifytop"></div>
+                        <div class="control-group">
+                            <div class="controls">
+                                <label class="checkbox">
+                                    <div class="checker" id="uniform-undefined"><span><input id="remember_me_checkbox" type="checkbox" class="fancy" style="opacity: 0;"></span></div> <spring:message code="login.label.remember"/>
+                                </label>
+                                <button id="submit-btn" name="submit" type="submit" class="btn btn-warning" type="submit"><spring:message code="global.submit" /></button>
+                                <button name="reset" type="reset" class="btn btn-warning" type="submit"><spring:message code="global.reset" /></button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <p><spring:message code="login.create" htmlEscape="false"/></p>
+                </fieldset>
+                <div id="notifytop"></div>
+            </div>
         </sec:authorize>
 
         <sec:authorize access="isAuthenticated()">

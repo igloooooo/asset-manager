@@ -1,10 +1,14 @@
 package com.assetmanager.service.merchant;
 
 import com.assetmanager.model.asset.def.Merchant;
+import com.assetmanager.model.core.DomainEntity;
 import com.assetmanager.service.dao.GenericDAO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,4 +26,10 @@ public class MerchantService {
     {
         return genericDAO.save(merchant);
     }
+
+    public List<Merchant> getMerchantList()
+    {
+        return (List<Merchant>)genericDAO.findByQuery("SELECT m from Merchant m", null, Merchant.class);
+    }
+
 }

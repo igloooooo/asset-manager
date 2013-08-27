@@ -24,21 +24,19 @@ import java.util.Map;
  */
 @Repository(GenericDAO.BEAN_NAME)
 @Transactional(readOnly = false)
-public class GenericDAO {
+public class GenericDAO
+{
     public static final String BEAN_NAME = "GenericDAO";
-
     /**
      * The datastore service.
      */
     @Resource
     private DatastoreService datastoreService;
-
     /**
      * The memcache service.
      */
     @Resource
     private MemcacheService memcacheService;
-
     /**
      * The entity manager.
      */
@@ -46,58 +44,73 @@ public class GenericDAO {
     private transient EntityManager entityManager;
 
     @Transactional(readOnly = true)
-    public <T extends DomainEntity> T findByKey(Class<T> clazz, Key id) {
-        T entity = (T) entityManager.find(clazz, id);
+    public <T extends DomainEntity> T findByKey(Class<T> clazz, Key id)
+    {
+        T entity = (T)entityManager.find(clazz, id);
 
-        if (entity == null) {
+        if (entity == null)
+        {
             throw new ObjectRetrievalFailureException(clazz, id);
         }
         return entity;
     }
 
     @Transactional(readOnly = true)
-    public <T extends DomainEntity> Collection<T> findAll(Class<T> clazz) {
+    public <T extends DomainEntity> Collection<T> findAll(Class<T> clazz)
+    {
         String sql = "from " + clazz.getName();
-        return (Collection<T>) entityManager.createQuery(sql).getResultList();
+        return (Collection<T>)entityManager.createQuery(sql).getResultList();
     }
 
     @Transactional
     @SuppressWarnings("unchecked")
-    public <T extends DomainEntity> void remove(T domainObj) {
+    public <T extends DomainEntity> void remove(T domainObj)
+    {
         entityManager.remove(domainObj);
     }
 
     @Transactional(readOnly = true)
-    public <T extends DomainEntity> Collection<T> findByNamedQuery(Class<T> clazz, String namedQuery, Map<String, Object> values) {
+    public <T extends DomainEntity> Collection<T> findByNamedQuery(Class<T> clazz, String namedQuery, Map<String,
+        Object> values)
+    {
         Query query = entityManager.createNamedQuery(namedQuery);
-        for (Map.Entry<String, Object> entry : values.entrySet()) {
+        for (Map.Entry<String, Object> entry : values.entrySet())
+        {
             query.setParameter(entry.getKey(), entry.getValue());
         }
-        return (Collection<T>) query.getResultList();
+        return (Collection<T>)query.getResultList();
     }
 
     @Transactional
-    public <T extends DomainEntity> T save(T domainObj) {
+    public <T extends DomainEntity> T save(T domainObj)
+    {
         entityManager.persist(domainObj);
         return domainObj;
     }
 
     @Transactional
-    public void flush() {
+    public void flush()
+    {
         entityManager.flush();
     }
 
     @Transactional
-    public <T extends DomainEntity> void refresh(T domainObj) {
+    public <T extends DomainEntity> void refresh(T domainObj)
+    {
         entityManager.refresh(domainObj);
     }
 
     @Transactional(readOnly = true)
-    public <T extends DomainEntity> Collection<T> findByQuery(String namedQuery, Map<String, Object> values) {
-        Query query = entityManager.createQuery(namedQuery);
-        for (Map.Entry<String, Object> entry : values.entrySet()) {
-            query.setParameter(entry.getKey(), entry.getValue());
+    public <T extends DomainEntity> Collection<T> findByQuery(String sql, Map<String, Object> values, Class<T> clazz)
+    {
+        Query query = entityManager.createQuery(sql);
+        if (values != null)
+        {
+            for (Map.Entry<String, Object> entry : values.entrySet())
+            {
+                query.setParameter(entry.getKey(), entry.getValue());
+            }
         }
-        return (Collection<T>) query.getResultList();
+        return (Collection<T>)query.getResultList();
     }
 }

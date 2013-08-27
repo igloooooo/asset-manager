@@ -23,6 +23,7 @@
         <pattern>/login.jsp</pattern>
     </excludes>
     <decorator name="master" page="master.jsp">
+        <pattern>/merchant</pattern>
         <pattern>/merchant/*</pattern>
         <pattern>/index</pattern>
         <pattern>/help</pattern>

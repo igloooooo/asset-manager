@@ -1,5 +1,6 @@
 package com.assetmanager.controller;
 
+import com.assetmanager.model.asset.def.Merchant;
 import com.assetmanager.model.auth.UserAccount;
 import com.assetmanager.service.auth.EnhancedUserDetailsService;
 import com.assetmanager.service.merchant.MerchantService;
@@ -7,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,5 +29,12 @@ public class MerchantManageController {
     public final String merchantManager(final ModelMap modelMap)
     {
         return "merchant/merchantManager";
+    }
+
+    @RequestMapping(value = "/merchant/list", method = RequestMethod.GET)
+    @ResponseBody
+    public final List<Merchant> merchantList()
+    {
+        return merchantService.getMerchantList();
     }
 }
