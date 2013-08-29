@@ -22,82 +22,63 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
     <head>
-        <title><spring:message code="login.title" /></title>
-        <link rel="stylesheet" href="/css/jquery-ui.css" />
-        <link rel="stylesheet" href="/css/primeui-0.9.6-min.css" />
-        <link rel="stylesheet" href="/css/theme.css" />
-        <script type="text/javascript" src="/js/json2.js"></script>
-        <script type="text/javascript" src="${pageContext.request.scheme}://www.google.com/jsapi?key=<c:choose><c:when test="${pageContext.request.scheme == 'http'}">${initParam.jsapiHttpKey}</c:when><c:otherwise>${initParam.jsapiHttpsKey}</c:otherwise></c:choose>"></script>
-        <script src="http://code.jquery.com/jquery-${initParam.jQueryVersion}.min.js"></script>
-        <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-        <script type="text/javascript" src="/js/primeui-0.9.6-min.js"></script>
+
     </head>
     <body>
-        <sec:authorize access="isAnonymous()">
-            <div class="well widget">
+        <div class="well widget">
+            <sec:authorize access="isAnonymous()">
                 <div class="widget-header">
-               		<h3 class="title">Welcome to AM</h3>
-               	</div>
-                <fieldset id="login_fieldset" style="margin-bottom:20px">
-                    <legend><spring:message code="login.header"/></legend>
+                    <h3><spring:message code="login.header" /></h3>
+                </div>
 
-                    <c:if test="${not empty error}">
-                        <p><spring:message code="login.error"/></p>
-                    </c:if>
+                <c:if test="${not empty error}">
+                    <p class="error"><spring:message code="login.error" /></p>
+                </c:if>
 
-                    <p id="userWarning" class="error" style="display:none"><spring:message code="login.nouser"/></p>
+                <p id="userWarning" class="error" style="display:none"><spring:message code="login.nouser" /></p>
 
-                    <form action="/login/submit" method="post" class="form-horizontal">
-                        <div class="control-group">
-                            <label for="username" class="control-label"><spring:message code="login.label.username"/></label>
-                            <div class="controls">
-                                <input type="text" name="username" placeholder="Username" id="username" value="<c:if test="${not empty error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}" escapeXml="false" /></c:if>"/>
-                            </div>
+                <form action="/login/submit" method="post" class="form-horizontal">
+                    <div class="control-group">
+                        <label for="username" class="control-label"><spring:message code="login.label.username" /></label>
+                        <div class="controls">
+                            <input id="username" type="text" name="username" value="<c:if test="${not empty error}"><c:out value="${SPRING_SECURITY_LAST_USERNAME}" escapeXml="false" /></c:if>"/>
                         </div>
-                        <div class="control-group">
-                            <label for="password" class="control-label"><spring:message code="login.label.password"/></label>
-                            <div class="controls">
-                                <input type="password" placeholder="Password" id="password">
-                            </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="inputPassword" class="control-label"><spring:message code="login.label.password" /></label>
+                        <div class="controls">
+                            <input id="inputPassword" type="password" name="password" />
                         </div>
-
-                        <div class="control-group">
-                            <div class="controls">
-                                <label class="checkbox">
-                                    <div class="checker" id="uniform-undefined"><span><input id="remember_me_checkbox" type="checkbox" class="fancy" style="opacity: 0;"></span></div> <spring:message code="login.label.remember"/>
-                                </label>
-                                <button id="submit-btn" name="submit" type="submit" class="btn btn-warning" type="submit"><spring:message code="global.submit" /></button>
-                                <button name="reset" type="reset" class="btn btn-warning" type="submit"><spring:message code="global.reset" /></button>
-                            </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                <div class="checker" id="uniform-undefined"><span><input type="checkbox" class="fancy" style="opacity: 0;"></span></div> <spring:message code="login.label.remember" />
+                            </label>
+                            <button class="btn btn-warning" name="submit" type="submit"><spring:message code="global.submit" /></button>
+                            <button class="btn btn-warning" name="reset" type="reset"><spring:message code="global.reset" /></button>
                         </div>
-                    </form>
+                    </div>
+                </form>
 
-                    <p><spring:message code="login.create" htmlEscape="false"/></p>
-                </fieldset>
-                <div id="notifytop"></div>
-            </div>
-        </sec:authorize>
+                <p><spring:message code="login.create" htmlEscape="false" /></p>
+            </sec:authorize>
 
-        <sec:authorize access="isAuthenticated()">
-            <p><spring:message code="global.logout" htmlEscape="false" /></p>
-        </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <p><spring:message code="global.logout" htmlEscape="false" /></p>
+            </sec:authorize>
+        </div>
 
-		    <script type="text/javascript">
+        <script type="text/javascript">
             $(document).ready(function () {
-                $('#username').puiinputtext();
-                $('#password').puiinputtext();
-                $('#remember_me_checkbox').puicheckbox();
-                $('#login_fieldset').puifieldset();
-                $('#notifytop').puinotify();
-
                 $("input[name='username']").blur(function () {
                     var values = {};
                     values['username'] = this.value;
-                    
+
                     sendJson(
                         values,
                         '/login/validate',
-                        function(result) { 
+                        function(result) {
                             if (result.found) {
                                 $('#userWarning').hide();
                             } else {
@@ -106,7 +87,6 @@
                         }
                     );
                 });
-
             });
         </script>
 	  </body>

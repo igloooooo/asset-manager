@@ -40,7 +40,20 @@
     <div id="addMerchantDlg" title="Add Merchant">
         <fieldset id="addMerchantTitle">
             <legend>Add Merchant</legend>
-
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label for="merchantName" class="control-label">Name</label>
+                    <div class="controls">
+                        <input type="text" id="merchantName">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="merchantTradeName" class="control-label">Trade Name</label>
+                    <div class="controls">
+                        <input type="text" id="merchantTradeName">
+                    </div>
+                </div>
+            </form>
         </fieldset>
     </div>
     <!-- ./ add new merchant -->
@@ -53,14 +66,15 @@
                 maximizable: true,
                 modal: true,
                 buttons: [{
-                        text: 'Yes',
+                        text: 'Create',
                         icon: 'ui-icon-check',
                         click: function() {
+
                             $('#addMerchantDlg').puidialog('hide');
                         }
                     },
                     {
-                        text: 'No',
+                        text: 'Cancel',
                         icon: 'ui-icon-close',
                         click: function() {
                             $('#addMerchantDlg').puidialog('hide');

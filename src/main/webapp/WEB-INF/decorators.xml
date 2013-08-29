@@ -19,9 +19,14 @@
 -->
 <decorators defaultdir="/WEB-INF/view/decorators">
     <excludes>
-        <pattern>/login</pattern>
-        <pattern>/login.jsp</pattern>
+
     </excludes>
+    <decorator name="login" page="loginTemplate.jsp">
+        <pattern>/login</pattern>
+        <pattern>/register/**</pattern>
+        <pattern>/error/**</pattern>
+        <pattern>/login/**</pattern>
+    </decorator>
     <decorator name="master" page="master.jsp">
         <pattern>/merchant</pattern>
         <pattern>/merchant/*</pattern>
