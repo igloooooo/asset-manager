@@ -5,6 +5,8 @@ import com.assetmanager.model.core.DomainEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.math.BigDecimal;
@@ -26,6 +28,7 @@ public class BaseAssetDef extends DomainEntity {
      * The key.
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Key key;
 
     private Date createOn;

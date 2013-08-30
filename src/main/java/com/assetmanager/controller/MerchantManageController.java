@@ -2,8 +2,10 @@ package com.assetmanager.controller;
 
 import com.assetmanager.model.asset.def.Merchant;
 import com.assetmanager.model.auth.UserAccount;
+import com.assetmanager.model.dto.Response;
 import com.assetmanager.service.auth.EnhancedUserDetailsService;
 import com.assetmanager.service.merchant.MerchantService;
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -36,5 +39,12 @@ public class MerchantManageController {
     public final List<Merchant> merchantList()
     {
         return merchantService.getMerchantList();
+    }
+    @RequestMapping(value = "/merchant/add", method = RequestMethod.POST)
+    @ResponseBody
+    public final Response createMerchant(HttpEntity<Merchant> merchant, HttpServletRequest request)
+    {
+        merchantService.createMerchant(merchant.getBody());
+        return new Response(true, "");
     }
 }

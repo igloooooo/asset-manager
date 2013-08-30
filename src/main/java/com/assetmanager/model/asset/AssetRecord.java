@@ -6,6 +6,8 @@ import com.google.appengine.api.datastore.Key;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -24,6 +26,7 @@ public class AssetRecord extends DomainEntity {
      * The key.
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Key key;
 
     private Key defKey;
@@ -33,6 +36,8 @@ public class AssetRecord extends DomainEntity {
     private String createBy;
 
     private RecordStatus recordStatus = RecordStatus.StoreIn;
+
+    private Integer amount;
 
     public AssetRecord() {
     }
@@ -51,5 +56,45 @@ public class AssetRecord extends DomainEntity {
 
     public void setDefKey(Key defKey) {
         this.defKey = defKey;
+    }
+
+    public Date getCreateOn()
+    {
+        return createOn;
+    }
+
+    public void setCreateOn(Date createOn)
+    {
+        this.createOn = createOn;
+    }
+
+    public String getCreateBy()
+    {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy)
+    {
+        this.createBy = createBy;
+    }
+
+    public RecordStatus getRecordStatus()
+    {
+        return recordStatus;
+    }
+
+    public void setRecordStatus(RecordStatus recordStatus)
+    {
+        this.recordStatus = recordStatus;
+    }
+
+    public Integer getAmount()
+    {
+        return amount;
+    }
+
+    public void setAmount(Integer amount)
+    {
+        this.amount = amount;
     }
 }

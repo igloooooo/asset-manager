@@ -6,6 +6,8 @@ import org.codehaus.jackson.annotate.JsonAutoDetect;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -24,6 +26,7 @@ public class Merchant extends DomainEntity {
      * The key.
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Key key;
 
     private String name;

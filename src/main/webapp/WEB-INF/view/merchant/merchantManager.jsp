@@ -37,7 +37,7 @@
     <div id="manageList"></div>
     <!-- ./ merchant list -->
     <!-- add new merchant -->
-    <div id="addMerchantDlg" title="Add Merchant">
+    <div id="addMerchantDlg" title="Add Merchant" style="height: 400px; width: 600px;">
         <fieldset id="addMerchantTitle">
             <legend>Add Merchant</legend>
             <form class="form-horizontal">
@@ -69,6 +69,18 @@
                         text: 'Create',
                         icon: 'ui-icon-check',
                         click: function() {
+                            var merchant = {
+                                name: $('#merchantName').val(),
+                                tradeName: $('#merchantTradeName').val()
+                            };
+                            sendJson(
+                                merchant,
+                                '/merchant/add',
+                                function(result){
+                                    // refresh the grid
+
+                                }
+                            )
 
                             $('#addMerchantDlg').puidialog('hide');
                         }
@@ -90,9 +102,9 @@
                 },
                 columns: [
                     {field:'name', headerText: 'name', sortable:true},
-                    {field:'tradeName', headerText: 'tradeName', sortable:true},
-                    {field:'contactName', headerText: 'contactName', sortable:true},
-                    {field:'contactNumber', headerText: 'contactNumber', sortable:true}
+                    {field:'tradeName', headerText: 'Trade Name', sortable:true},
+                    {field:'contactName', headerText: 'Contact Name', sortable:true},
+                    {field:'contactNumber', headerText: 'Contact Number', sortable:true}
                 ],
                 datasource: function(callback){
                     $.ajax({
