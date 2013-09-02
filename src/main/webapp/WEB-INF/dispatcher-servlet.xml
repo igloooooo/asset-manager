@@ -44,6 +44,8 @@
     <mvc:view-controller path="/helloWorld" view-name="index" />
     <mvc:view-controller path="/register/success" view-name="createSuccess" />
     <mvc:view-controller path="/merchant" view-name="merchant/merchantManager" />
+    <mvc:view-controller path="/visualise" view-name="visualise/visualise" />
+    <mvc:view-controller path="/amdef" view-name="amdef/amDef" />
 
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="defaultErrorView" value="error" />

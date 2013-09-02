@@ -45,6 +45,8 @@ public class BaseAssetDef extends DomainEntity {
 
     private String price;
 
+    private MaterialType materialType;
+
     @Override
     public final Key getKey() {
         return key;
@@ -109,5 +111,15 @@ public class BaseAssetDef extends DomainEntity {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public MaterialType getMaterialType()
+    {
+        return materialType;
+    }
+
+    public void setMaterialType(MaterialType materialType)
+    {
+        this.materialType = materialType;
     }
 }

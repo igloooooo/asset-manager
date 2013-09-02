@@ -35,6 +35,7 @@
         <exclude path="/images/**" />
         <exclude path="/css/**" />
         <exclude path="/js/**" />
+        <exclude path="/library/**" />
         <exclude path="/favicon.ico" />
     </resource-files>
 
