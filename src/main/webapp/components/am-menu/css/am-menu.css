@@ -1,0 +1,27 @@
+.am-menu-nest-vertical {
+    width: 445px;
+    height: 445px;
+}
+
+.am-menu-nest-vertical > li {
+    height: 145px;
+    margin-top: 5px;
+}
+
+.am-menu-nest-horizontal {
+    width: 445px;
+    height: 100%;
+}
+
+.am-menu-nest-horizontal > li {
+    height: 100%;
+    width: 145px;
+    float: left;
+    margin-left: 5px;
+    background-color: #ffaa00;
+}
+
+.am-create{
+    background-image: url(/img/plus-orange.png);
+    background-repeat:no-repeat;
+}

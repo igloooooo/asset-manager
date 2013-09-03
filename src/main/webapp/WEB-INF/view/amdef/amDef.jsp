@@ -10,7 +10,7 @@
 <head>
     <title>AM Def Catalog</title>
     <link rel='stylesheet' type='text/css' href='/css/jquery.kwicks.min.css' />
-    <script src="/js/jquery.kwicks.min.js" type="text/javascript"></script>
+    <link rel='stylesheet' type='text/css' href='/components/am-menu/css/am-menu.css' />
     <style type='text/css'>
         .kwicks {
             width: 515px;
@@ -32,16 +32,28 @@
 </head>
 <body>
     <ul class='kwicks kwicks-horizontal'>
-        <li id='panel-clamp'>Clamp</li>
+        <li id='panel-clamp' style='background-image: url(/img/plus-orange.png)'>Clamp</li>
         <li id='panel-muffler'>Muffler</li>
         <li id='panel-pipe'>Pipe</li>
         <li id='panel-tip'>Tip</li>
     </ul>
+    <div id="test"></div>
+    <script src="/js/jquery.kwicks.min.js" type="text/javascript"></script>
+    <script src="/components/am-menu/js/am-menu.js" type="text/javascript"></script>
     <script>
         $(document).ready(function(){
             $('.kwicks').kwicks({
                 maxSize: 250,
                 behavior: 'menu'
+            });
+            $('.kwicks').on('select.kwicks', function(e, data){
+
+            });
+            $('#test').ammenu({
+                columnNumber: 3,
+                dataSource: [
+                    {title:'Add', url:'plus-orange.png'}
+                ]
             })
         });
     </script>
