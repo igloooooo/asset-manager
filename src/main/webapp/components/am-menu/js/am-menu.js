@@ -60,7 +60,7 @@ $(function ()
         _renderData: function ()
         {
             var $this = this;
-            this.data.push({title: '_add', url: null});
+            this.data.push({title: '_add', url: '/img/plus-orange.png'});
             if (this.data)
             {
                 this.warpper.html('');
@@ -69,12 +69,12 @@ $(function ()
                     // nested layout
                     var len = this.data.length;
                     var columnNumber = this.options.columnNumber;
-                    var rowNumber = len / columnNumber + 1;
+                    var rowNumber = len / columnNumber;
                     var i = 0;
                     for (var rowIndex = 0; rowIndex < rowNumber; rowIndex++)
                     {
                         var rowWarpper = $('<li></li>').appendTo(this.warpper);
-                        rowWarpper = $('<ul class="kwicks kwicks-horizontal"></ul>').appendTo(rowWarpper);
+                        rowWarpper = $('<ul class="kwicks am-menu-nest-horizontal"></ul>').appendTo(rowWarpper);
                         for (var columnIndex = 0; columnIndex < columnNumber && i < len; columnIndex++)
                         {
                             var rowData = this.data[i];
@@ -82,21 +82,25 @@ $(function ()
                             {
                                 var id = "panel-clamp-" + i;
                                 var row = $("<li id='" + id + "'></li>").appendTo(rowWarpper);
-                                if (rowData.title == '_add')
-                                {
-                                    var img = $('<a href="/amDef?catlog=1" target="_self"></a>').appendTo(row);
-                                    var my_css_class = {'background-image': 'url(/img/plus-orange.png)', 'background-repeat':'no-repeat'};
-                                    row.css(my_css_class)
-                                }
-                                else
-                                {
-                                    var img = $('<a href="/amDef/list/'+rowData.id+'" target="_self"></a>').appendTo(row);
-                                    row.css('background-image',rowData.url)
-                                }
+
+                                var img = $('<img src="'+rowData.url+'" style="width: 96px; height: 96px"/>').appendTo(row);
+
                             }
                             i++;
                         }
                     }
+                    $('.am-menu-nest-vertical').kwicks({
+                        maxSize : 295,
+                        isVertical: true,
+                        behavior: 'menu',
+                        selectOnClick: false
+                    });
+
+                    $('.am-menu-nest-horizontal').kwicks({
+                        maxSize: 295,
+                        behavior: 'menu',
+                        selectOnClick: false
+                    });
                 }
                 else
                 {
@@ -113,20 +117,22 @@ $(function ()
                             var row = $('<li id="' + id + '">' + rowData.title + '</li>').appendTo(this.warpper);
                         }
                     }
+                    $('.kwicks').kwicks({
+                        maxSize: 256,
+                        behavior: this.type
+
+                    });
+                    $('.kwicks').on('select.kwicks', function (e, data)
+                    {
+                        if (this.options.onSelect)
+                            this.options.onSelect(e, data)
+                    });
                 }
 
 
-                $('.kwicks').kwicks({
-                    maxSize: 256,
-                    behavior: this.type
 
-                });
 
-                $('.kwicks').on('select.kwicks', function (e, data)
-                {
-                    if (this.options.onSelect)
-                        this.options.onSelect(e, data)
-                });
+
             }
         }
     });

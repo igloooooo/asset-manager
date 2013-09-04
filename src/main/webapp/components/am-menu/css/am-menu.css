@@ -1,3 +1,49 @@
+.kwicks {
+    display: block;
+    list-style-type: none;
+    list-style: none;
+    position: relative;
+    margin: 0;
+    padding: 0
+}
+
+.kwicks>* {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    margin: 0
+}
+
+.kwicks.kwicks-processed>* {
+    margin: 0;
+    position: absolute
+}
+
+.kwicks-horizontal>* {
+    float: left
+}
+
+.kwicks-horizontal>:first-child {
+    margin-left: 0
+}
+
+.kwicks-vertical>:first-child {
+    margin-top: 0
+}
+
+.menu-kwicks {
+    width: 515px;
+    height: 100px;
+}
+
+.menu-kwicks > li {
+    height: 100px;
+    /* overridden by kwicks but good for when JavaScript is disabled */
+    width: 125px;
+    margin-left: 5px;
+    float: left;
+}
+
 .am-menu-nest-vertical {
     width: 445px;
     height: 445px;
@@ -21,7 +67,13 @@
     background-color: #ffaa00;
 }
 
-.am-create{
+.am-create {
     background-image: url(/img/plus-orange.png);
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
+}
+
+.aligncenter {
+ clear: both;
+ display: block;
+ margin:auto;
 }
