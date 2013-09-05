@@ -24,23 +24,24 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
+@RequestMapping("/merchant")
 public class MerchantManageController {
     @Resource
     private MerchantService merchantService;
 
-    @RequestMapping(value = "/merchant", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public final String merchantManager(final ModelMap modelMap)
     {
         return "merchant/merchantManager";
     }
 
-    @RequestMapping(value = "/merchant/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public final List<Merchant> merchantList()
     {
         return merchantService.getMerchantList();
     }
-    @RequestMapping(value = "/merchant/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public final Response createMerchant(HttpEntity<Merchant> merchant, HttpServletRequest request)
     {

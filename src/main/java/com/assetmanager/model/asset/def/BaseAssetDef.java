@@ -2,6 +2,7 @@ package com.assetmanager.model.asset.def;
 
 import com.google.appengine.api.datastore.Key;
 import com.assetmanager.model.core.DomainEntity;
+import org.codehaus.jackson.annotate.JsonAutoDetect;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ import java.util.Date;
 @Repository
 @Entity
 @MappedSuperclass
+@JsonAutoDetect
 public class BaseAssetDef extends DomainEntity {
     /**
      * The key.
@@ -46,6 +48,8 @@ public class BaseAssetDef extends DomainEntity {
     private String price;
 
     private MaterialType materialType;
+
+    private Key catalogKey;
 
     @Override
     public final Key getKey() {
@@ -121,5 +125,15 @@ public class BaseAssetDef extends DomainEntity {
     public void setMaterialType(MaterialType materialType)
     {
         this.materialType = materialType;
+    }
+
+    public Key getCatalogKey()
+    {
+        return catalogKey;
+    }
+
+    public void setCatalogKey(Key catalogKey)
+    {
+        this.catalogKey = catalogKey;
     }
 }

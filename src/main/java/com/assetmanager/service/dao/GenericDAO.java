@@ -81,6 +81,17 @@ public class GenericDAO
         return (Collection<T>)query.getResultList();
     }
 
+    @Transactional(readOnly = true)
+    public <T extends DomainEntity> Collection<T> findByNamedQuery(Class<T> clazz, String namedQuery, Object[] values)
+    {
+        Query query = entityManager.createNamedQuery(namedQuery);
+        for (int i=0; i<values.length; i++)
+        {
+            query.setParameter(i, values[i]);
+        }
+        return (Collection<T>)query.getResultList();
+    }
+
     @Transactional
     public <T extends DomainEntity> T save(T domainObj)
     {
